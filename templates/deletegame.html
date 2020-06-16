@@ -1,0 +1,35 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/post.css')}}">
+<div id="content">
+  <div class="container">
+    {% set fname = 'img/games/' + game.nick + '.png' %}
+    <div class="card" style="background-color:white">
+      <a href="/play/{{game.id}}">
+        <img src="{{ url_for('static',filename=fname)}}"><br>
+        <h3 id="name">{{game.name}}</h3>
+      </a>
+    </div>
+    <form class="about" action="/deletegame/{{game.id}}" method="post">
+      <br><br>
+      <label>Password</label>
+      <br><br>
+      <input required type="password" name="password" class="inputbox" value="" placeholder="password">
+      <br><br>
+      <button type="submit" id="check" style="width: 60%;">Delete</button>
+      <div id="snackbar" style="background-color: #ed2727;color: white;">Sorry! The password is not right</div>
+      <script type="text/javascript">
+        function fail(){
+          var x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+        if({{res}}){
+          window.onload = fail
+        }
+      </script>
+    </form>
+  </div>
+</div>
+{% endblock %}

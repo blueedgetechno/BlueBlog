@@ -1,0 +1,15 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/card.css')}}">
+<div id="content">
+  {% for video in videos %}
+    <div class="post-container">
+      <div class="post" style="padding:20px;">
+        <a href="/deletevideo/{{video.id}}" type="submit" style="float:right;color:red;" id="icons" class="fa fa-trash" ></a>
+        <h3 class="post-title">{{video.title}}</h3>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+  {%endblock%}

@@ -1,0 +1,41 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/post.css')}}">
+<div id="content">
+  <div class="container">
+    <form class="about" action="/add" method="post">
+      <div class="about-author">
+        <img style="border-color:#debd9c" src="https://i.pinimg.com/originals/fb/ca/85/fbca859c7636749cb38b4788013c547c.jpg">
+        <br><br>
+        <span>Hello Blue</span><br><br><br>
+      </div>
+      <label>Title</label>
+      <br><br>
+      <input required type="text" name="title" class="inputbox" value="" placeholder="Title of the video">
+      <br><br>
+      <label>Video link</label>
+      <br><br>
+      <input required type="text" name="link" class="inputbox" value="" placeholder="Embeded link of the video">
+      <br><br>
+      <label>Password</label>
+      <br><br>
+      <input required type="password" name="password" class="inputbox" value="" placeholder="password">
+      <br><br>
+      <button type="submit" id="check">Upload</button>
+      <div id="snackbar" style="background-color: #ed2727;color: white;">Sorry! The password is not right</div>
+      <script type="text/javascript">
+        function fail() {
+          var x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function() {
+            x.className = x.className.replace("show", "");
+          }, 3000);
+        }
+        if ({{res}}){
+          window.onload = fail
+        }
+      </script>
+    </form>
+  </div>
+</div>
+{%endblock%}

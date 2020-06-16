@@ -1,0 +1,58 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/post.css')}}">
+<div id="content">
+  <div class="container">
+    <form class="about" action="/editor/{{game.id}}" method="post" enctype="multipart/form-data">
+      <div class="about-author">
+        <img style="border-color:#d51021" src="../static/img/post/hero.png">
+        <br><br>
+        <span>Hello Blue</span><br><br><br>
+      </div>
+      <label>Name</label>
+      <br><br>
+      <input required type="text" name="name" class="inputbox" value="{{game.name}}" placeholder="Name of the game">
+      <br><br>
+      <label>Name of the image&js files</label>
+      <br><br>
+      <input required type="text" name="nick" class="inputbox" value="{{game.nick}}" placeholder="Name of the files">
+      <br><br>
+      <label>Description</label>
+      <br><br>
+      <textarea required name="discrip" rows="2" cols="80" class="contentbox" placeholder="Description of the game"></textarea>
+      <script type="text/javascript">
+        document.getElementsByClassName('contentbox')[0].innerHTML = {{game.dis|tojson}}
+      </script>
+      <br><br>
+
+      <div class="upload-btn-wrapper">
+        <button class="btn">Upload image file</button>
+        <input required type="file" accept=".png" name="imagefile" />
+      </div>
+      <div class="upload-btn-wrapper">
+        <button class="btn">Upload Js file</button>
+        <input required type="file" accept=".js" name="jsfile" />
+      </div>
+      <br><br>
+      <label>Password</label>
+      <br><br>
+      <input required type="password" name="password" class="inputbox" value="" placeholder="password">
+      <br><br>
+      <button type="submit" id="check">Save</button>
+      <div id="snackbar" style="background-color: #ed2727;color: white;">Sorry! The password is not right</div>
+      <script type="text/javascript">
+        function fail() {
+          var x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function() {
+            x.className = x.className.replace("show", "");
+          }, 3000);
+        }
+        if ({{res}}) {
+          window.onload = fail
+        }
+      </script>
+    </form>
+  </div>
+</div>
+{%endblock%}

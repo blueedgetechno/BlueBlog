@@ -1,0 +1,22 @@
+{%extends 'base.html' %}
+{%block body%}
+<div id="content">
+  <div class="container">
+    <div class="about">
+      <div class="about-author">
+        <span style="text-transform: uppercase;">{{game.name}}</span>
+      </div>
+    <div class="container" style="text-align: center;margin-top:50px">
+      <iframe src="/play/full/{{game.id}}" width="736" height="590"></iframe>
+    </div>
+    <br>
+    <div class="about-content">
+      <div class="habbits">
+        <p style="margin-left:85px">{{game.dis}}</p>
+      </div>
+      <p><a href="/play/full/{{game.id}}" target="_blank">Play in full screen</a></p>
+    </div>
+  </div>
+</div>
+</div>
+{%endblock%}

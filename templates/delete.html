@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/post.css')}}">
+<div id="content">
+  <div class="container">
+    <div class="post-container">
+      <div class="post">
+        {% set fname = 'img/post/'+post.image %}
+        <div class="post-author">
+          <img src="{{ url_for('static',filename=fname)}}"><span>{{post.author}}</span>
+        </div>
+        <p class="post-date" name="dated">{{post.date}}</p>
+        <h3 class="post-title">{{post.title}}</h3>
+        <div class="post-content">
+          <pre>{{post.content}}</pre>
+        </div>
+      </div>
+    </div>
+    <form class="about" action="/delete/{{post.id}}" method="post">
+      <br><br>
+      <label>Password</label>
+      <br><br>
+      <input required type="password" name="password" class="inputbox" value="" placeholder="password">
+      <br><br>
+      <button type="submit" id="check">Delete</button>
+      <div id="snackbar" style="background-color: #ed2727;color: white;">Sorry! The password is not right</div>
+      <script type="text/javascript">
+        function fail(){
+          var x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+        if({{res}}){
+          window.onload = fail
+        }
+      </script>
+    </form>
+  </div>
+</div>
+{%endblock%}

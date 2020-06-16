@@ -1,0 +1,17 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/card.css')}}">
+    <div id="content">
+      <div class="container">
+        {% for game in games %}
+          {% set fname = 'img/games/' + game.nick + '.png' %}
+          <div class="card">
+            <a href="/play/{{game.id}}">
+              <img src="{{ url_for('static',filename=fname)}}"><br>
+              <h3 id="name">{{game.name}}</h3>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+{%endblock%}

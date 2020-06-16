@@ -1,0 +1,64 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card.css')}}">
+<div id="content">
+  <div class="container">
+    <div class="about">
+      <div class="about-author">
+        <img src="https://i.pinimg.com/280x280_RS/9f/ff/a2/9fffa25c534b21d4b5832f6611b9764f.jpg">
+        <br><br>
+        <span>Hello Blue</span>
+      </div>
+
+      <div class="upload">
+        <a href="/post">
+          <div class="card plate">
+            <h3>Post a</h3>
+            <h3>Blog</h3>
+            <br>
+          </div>
+        </a>
+        <a href="/upload">
+          <div class="card plate">
+            <h3>Upload a</h3>
+            <h3>Game</h3>
+            <br>
+          </div>
+        </a>
+        <a href="/add">
+          <div class="card plate">
+            <h3>Upload a</h3>
+            <h3>Video</h3>
+            <br>
+          </div>
+        </a>
+      </div>
+
+      <div class="edit">
+        <a href="/edit">
+          <div class="card plate">
+            <h3>Edit a</h3>
+            <h3>Blog</h3>
+            <br>
+          </div>
+        </a>
+        <a href="/editor">
+          <div class="card plate">
+            <h3>Update a</h3>
+            <h3>Game</h3>
+            <br>
+          </div>
+        </a>
+        <a href="/editvideo">
+          <div class="card plate">
+            <h3>Delete a</h3>
+            <h3>Video</h3>
+            <br>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+{%endblock%}

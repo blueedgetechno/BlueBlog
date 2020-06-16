@@ -1,0 +1,19 @@
+{%extends "base.html" %}
+{%block body%}
+<div id="content">
+  {% for game in games %}
+  <div class="post-container">
+    <div class="post" style="padding:20px">
+      <div class="post-author" style="float:left;margin:10px;margin-left:-15px;">
+        <span style="text-transform: uppercase;">{{game.name}}</span>
+      </div>
+      <a href="/deletegame/{{game.id}}" type="submit" style="float:right;color:red;" id="icons" class="fa fa-trash" ></a>
+      <a href="/editor/{{game.id}}" type="submit" style="float:right;color:#2700ff;" id="icons" class="fa fa-pencil" ></a>
+      <p class="post-date" name="nick" style="margin-left:70px">{{game.nick}}</p>
+      <h3 class="post-title">{{game.dis}}</h3>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{%endblock%}

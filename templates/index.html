@@ -1,0 +1,21 @@
+{%extends "base.html" %}
+{%block body%}
+    <div id="content">
+      {% for post in posts %}
+        {% set fname = 'img/post/'+post.image %}
+        <div class="post-container">
+          <div class="post">
+            <div class="post-author">
+              <img src="{{ url_for('static',filename=fname)}}"><span>{{post.author}}</span>
+            </div>
+            <p class="post-date" name="dated">{{post.date}}</p>
+            <h3 class="post-title">{{post.title}}</h3>
+            <div class="post-content">
+              <pre>{{post.content}}</pre>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+{%endblock%}

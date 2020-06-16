@@ -1,0 +1,19 @@
+{%extends "base.html" %}
+{%block body%}
+<div id="content">
+  {% for post in posts %}
+  <div class="post-container">
+    <div class="post" style="padding:20px">
+      <div class="post-author" style="float:left;margin:10px;margin-left:-15px;">
+        <span>{{post.author}}</span>
+      </div>
+      <a href="/delete/{{post.id}}" type="submit" style="float:right;color:red;" id="icons" class="fa fa-trash" ></a>
+      <a href="/edit/{{post.id}}" type="submit" style="float:right;color:#2700ff;" id="icons" class="fa fa-pencil" ></a>
+      <p class="post-date" name="dated" style="margin-left:70px">{{post.date}}</p>
+      <h3 class="post-title">{{post.title}}</h3>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{%endblock%}
