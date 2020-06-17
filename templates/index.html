@@ -8,7 +8,7 @@
             <div class="post-author">
               <img src="{{ url_for('static',filename=fname)}}"><span>{{post.author}}</span>
             </div>
-            <p class="post-date" name="dated">{{post.date}}</p>
+            <p class="post-date" name="dated" id="{{post.date}}"></p>
             <h3 class="post-title">{{post.title}}</h3>
             <div class="post-content">
               <pre>{{post.content}}</pre>
@@ -16,6 +16,20 @@
           </div>
         </div>
       {% endfor %}
+    </div>
+    <div class="buttons">
+      <a class="pager" href="{{prev}}" name="prev" >Previous</a>
+      <a class="pager" href="{{next}}" name="next" >Next</a>
+      <script type="text/javascript">
+        var ck = document.getElementsByClassName('pager')
+        for(var i=0;i<ck.length;i++){
+          var x = ck[i].href
+          if( x[x.length-1]== "#"){
+            ck[i].style.opacity = 0;
+          }
+        }
+
+      </script>
     </div>
 
 {%endblock%}

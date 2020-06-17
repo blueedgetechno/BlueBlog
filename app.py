@@ -57,10 +57,30 @@ def check(s):
 def isalready(s):
     return s in images
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect('/error')
+
 @app.route('/')
 def index():
     posts = Posts.query.order_by(Posts.date.desc()).all()
-    return render_template('index.html',posts=posts)
+    tp = para['nofpost']
+    last=len(posts)//tp + (len(posts)%tp!=0)
+    if last==1:
+        return render_template('index.html', posts=posts, prev="#", next="#")
+
+    page = request.args.get('page')
+    try:
+        page = int(page)
+    except:
+        page = 0
+
+    posts = posts[page*tp:min((page+1)*tp,len(posts))]
+
+    prev = "?page="+str(page-1) if page>0 else "#"
+    next = "?page="+str(page+1) if page<last-1 else "#"
+
+    return render_template('index.html',posts=posts,prev=prev,next=next)
 
 
 @app.route('/edit')

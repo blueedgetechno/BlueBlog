@@ -9,7 +9,7 @@
         <div class="post-author">
           <img src="{{ url_for('static',filename=fname)}}"><span>{{post.author}}</span>
         </div>
-        <p class="post-date" name="dated">{{post.date}}</p>
+        <p class="post-date" name="dated" id="{{post.date}}"></p>
         <h3 class="post-title">{{post.title}}</h3>
         <div class="post-content">
           <pre>{{post.content}}</pre>

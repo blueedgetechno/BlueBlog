@@ -186,6 +186,12 @@ pre {
   vertical-align: middle;
   border-radius: 50%;
   border: 8px solid #25c58a;
+  box-shadow: 2px 4px 5px #888888;
+  transition: 0.5s;
+}
+
+.about-author img:hover{
+  cursor: none;
 }
 
 .about-author span {
@@ -362,4 +368,44 @@ a:hover {
 
 .plate:hover h3 {
   color: white;
+}
+
+.pager {
+  width: 10%;
+  color: white;
+  margin: 40px;
+  background-color: #20c998;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 3px solid #0fbc92;
+  border-radius: 10px;
+  box-shadow: 0px 0px 2px #888888;
+  transition: 0.5s;
+}
+
+.pager:active {
+  box-shadow: 2px 2px 7px #888888;
+  font-size: 15px;
+  transform: scale(0.9) translateZ(0);
+  transition: 0.5s;
+}
+
+.pager:hover{
+  color: white;
+}
+
+.pager, select {
+  outline: none;
+}
+
+.buttons{
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  align-content: space-between;
+  justify-content: space-around;
 }

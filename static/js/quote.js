@@ -25,7 +25,7 @@ function give(date1, date2) {
 function dates() {
   var dt = document.getElementsByName('dated');
   for (var i = 0; i < dt.length; i++) {
-    dt[i].textContent = give(new Date(dt[i].textContent), new Date())
+    dt[i].textContent = give(new Date(dt[i].id), new Date())
   }
 }
 
