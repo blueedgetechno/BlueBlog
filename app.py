@@ -111,7 +111,7 @@ def deletegame(id):
                     os.remove(os.path.join('static/js/games/', game.nick + '.js'))
                 except:
                     return redirect('/error')
-                    
+
                 db.session.delete(game)
                 db.session.commit()
                 return redirect('/editor')
