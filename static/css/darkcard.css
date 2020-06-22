@@ -6,6 +6,7 @@
 }
 
 .card{
+  background-color: inherit;
   vertical-align: middle;
   max-width: 600px;
   max-height: 500px;
@@ -15,14 +16,17 @@
   margin-bottom: 60px;
   padding: 10px 10px 10px 10px;
   text-align:center;
-  box-shadow: 2px 5px 9px #888888;
+  box-shadow: 2px 5px 9px #070707;
   border-radius: 15px;
   transition: 0.5s;
+}
+.card h3{
+  color: white;
 }
 
 .card:hover{
   border-radius: 15px;
-  box-shadow: 5px 10px 20px #888888;
+  box-shadow: 5px 10px 20px #070707;
   transform: scale(1.10) translateZ(0);
   transition: 0.5s;
 }
@@ -45,12 +49,12 @@
   margin-bottom: 60px;
   padding: 10px 10px 10px 10px;
   text-align:center;
-  box-shadow: 2px 5px 9px #888888;
+  box-shadow: 2px 5px 9px #070707;
   border-radius: 15px;
 }
 
 .video #video-title{
-  color: #333;
+  color: #fff;
   transition: 0.5s;
 }
 

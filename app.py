@@ -5,6 +5,7 @@ from werkzeug import secure_filename
 import json,hashlib,os,random
 
 images = []
+theme = ["light"]
 for root, directories, files in os.walk("static/img/post"):
     for filename in files:
         images.append(filename)
@@ -67,7 +68,7 @@ def index():
     tp = para['nofpost']
     last=len(posts)//tp + (len(posts)%tp!=0)
     if last==1:
-        return render_template('index.html', posts=posts, prev="#", next="#")
+        return render_template('index.html', posts=posts, prev="#", next="#",theme=theme[0])
 
     page = request.args.get('page')
     try:
@@ -80,19 +81,23 @@ def index():
     prev = "?page="+str(page-1) if page>0 else "#"
     next = "?page="+str(page+1) if page<last-1 else "#"
 
-    return render_template('index.html',posts=posts,prev=prev,next=next)
+    return render_template('index.html',posts=posts,prev=prev,next=next,theme=theme[0])
 
 
 @app.route('/edit')
 def edit():
     posts = Posts.query.order_by(Posts.date.desc()).all()
-    return render_template('edit.html',posts=posts)
+    return render_template('edit.html',posts=posts,theme=theme[0])
 
+@app.route('/changetheme')
+def changetheme():
+    theme[0] = ['dark','light'][theme[0]=='dark']
+    return redirect(request.referrer)
 
 @app.route('/editor')
 def editor():
     games = Games.query.all()
-    return render_template('editor.html', games=games)
+    return render_template('editor.html', games=games,theme=theme[0])
 
 
 @app.route('/deletegame/<string:id>', methods=['GET', 'POST'])
@@ -119,9 +124,9 @@ def deletegame(id):
             except:
                 return redirect('/error')
         else:
-            return render_template('/deletegame.html', game=game, res=1)
+            return render_template('/deletegame.html', game=game, res=1,theme=theme[0])
     else:
-        return render_template('deletegame.html', game=game, res=0)
+        return render_template('deletegame.html', game=game, res=0,theme=theme[0])
 
 
 @app.route('/editor/<string:id>', methods=['GET', 'POST'])
@@ -156,9 +161,9 @@ def editgame(id):
             except:
                 return redirect('/error')
         else:
-            return render_template('editgame.html', game=game, res=1)
+            return render_template('editgame.html', game=game, res=1,theme=theme[0])
     else:
-        return render_template('editgame.html', game=game, res=0)
+        return render_template('editgame.html', game=game, res=0,theme=theme[0])
 
 @app.route('/edit/<string:id>',methods=['GET','POST'])
 def editblog(id):
@@ -178,9 +183,9 @@ def editblog(id):
             except:
                 return redirect('/error')
         else:
-            return render_template('/editblog.html',post=post, res=1)
+            return render_template('/editblog.html',post=post, res=1,theme=theme[0])
     else:
-        return render_template('editblog.html', post=post, res=0)
+        return render_template('editblog.html', post=post, res=0,theme=theme[0])
 
 
 @app.route('/delete/<string:id>', methods=['GET', 'POST'])
@@ -200,14 +205,14 @@ def delete(id):
             except:
                 return redirect('/error')
         else:
-            return render_template('/delete.html', post=post, res=1)
+            return render_template('/delete.html', post=post, res=1,theme=theme[0])
     else:
-        return render_template('delete.html', post=post, res=0)
+        return render_template('delete.html', post=post, res=0,theme=theme[0])
 
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html',theme=theme[0])
 
 
 @app.route('/add',methods=['GET','POST'])
@@ -225,20 +230,20 @@ def addvideo():
             except:
                 return redirect('/error')
         else:
-            return render_template('addvideo.html',res=1)
+            return render_template('addvideo.html',res=1,theme=theme[0])
     else:
-        return render_template('addvideo.html',res=0)
+        return render_template('addvideo.html',res=0,theme=theme[0])
 
 @app.route('/video')
 def video():
     videos = Videos.query.all()
-    return render_template('video.html',videos = videos)
+    return render_template('video.html',videos = videos,theme=theme[0])
 
 
 @app.route('/editvideo')
 def editvideo():
     videos = Videos.query.all()
-    return render_template('editvideo.html', videos=videos)
+    return render_template('editvideo.html', videos=videos,theme=theme[0])
 
 
 @app.route('/deletevideo/<string:id>', methods=['GET', 'POST'])
@@ -258,15 +263,15 @@ def deletevideo(id):
             except:
                 return redirect('/error')
         else:
-            return render_template('/deletevideo.html', video=video, res=1)
+            return render_template('/deletevideo.html', video=video, res=1,theme=theme[0])
     else:
-        return render_template('deletevideo.html', video=video, res=0)
+        return render_template('deletevideo.html', video=video, res=0,theme=theme[0])
 
 
 @app.route('/play')
 def menu():
     games = Games.query.all()
-    return render_template('play.html',games=games)
+    return render_template('play.html',games=games,theme=theme[0])
 
 @app.route('/upload', methods=['GET','POST'])
 def upload():
@@ -289,14 +294,14 @@ def upload():
             except :
                 return redirect('/error')
         else:
-            return render_template('upload.html',res=1)
+            return render_template('upload.html',res=1,theme=theme[0])
     else:
-        return render_template('upload.html',res=0)
+        return render_template('upload.html',res=0,theme=theme[0])
 
 
 @app.route('/error')
 def error():
-    return render_template('404.html')
+    return render_template('404.html',theme=theme[0])
 
 @app.route('/post',methods=['GET','POST'])
 def post():
@@ -311,7 +316,7 @@ def post():
                 try:
                     image = request.files['postimage']
                     if isalready(image.filename):
-                        return render_template('/postblog.html', res=0, res2=1)
+                        return render_template('/postblog.html', res=0, res2=1,theme=theme[0])
 
                     image.save(os.path.join('static/img/post/',secure_filename(image.filename)))
                 except:
@@ -328,14 +333,14 @@ def post():
             except:
                 return redirect('/error')
         else:
-            return render_template('/postblog.html',res=1,res2=0)
+            return render_template('/postblog.html',res=1,res2=0,theme=theme[0])
     else:
-        return render_template('/postblog.html',res=0,res2=0)
+        return render_template('/postblog.html',res=0,res2=0,theme=theme[0])
 
 
 @app.route('/admin/')
 def admin():
-    return render_template('admin.html')
+    return render_template('admin.html',theme=theme[0])
 
 
 @app.route('/play/<int:id>')
@@ -345,7 +350,7 @@ def play(id):
     except:
         return redirect('/error')
 
-    return render_template('games/playgame.html',game=game)
+    return render_template('games/playgame.html',game=game,theme=theme[0])
 
 
 @app.route('/play/full/<int:id>')

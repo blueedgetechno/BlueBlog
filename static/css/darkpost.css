@@ -10,12 +10,12 @@
   box-sizing: border-box;
   border: 3px solid #e1882d;
   border-radius: 24px;
-  box-shadow: 3px 3px 9px #888888;
+  box-shadow: 3px 3px 9px #0c0c0c;
   transition: 0.5s;
 }
 
 #check:active {
-  box-shadow: 2px 2px 7px #888888;
+  box-shadow: 2px 2px 7px #0c0c0c;
   font-size: 15px;
   transform: scale(0.9) translateZ(0);
   transition: 0.5s;
@@ -26,7 +26,7 @@
 }
 
 h1, h2, h3, h4 {
-  color: #333;
+  color: #fff;
 }
 
 p {
@@ -84,6 +84,7 @@ a:hover {
 }
 
 .inputbox {
+  background-color: #1e1e1e;
   font-family: inherit;
   font-size: 15px;
   font-weight: bold;
@@ -96,11 +97,12 @@ a:hover {
 }
 
 .inputbox, select {
-  color: #1e1e1e;
+  color: white;
   outline: none;
 }
 
 .contentbox {
+  background-color: #1e1e1e;
   font-family: inherit;
   font-size: 15px;
   font-weight: bold;
@@ -114,7 +116,7 @@ a:hover {
 }
 
 .contentbox, select {
-  color: #1e1e1e;
+  color: white;
   outline: none;
 }
 

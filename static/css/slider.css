@@ -1,0 +1,80 @@
+@use postcss-preset-env {
+  stage: 0;
+}
+
+#theme{
+  background-color: inherit;
+  color: white;
+  padding: 3px;
+  font-size: 26px;
+  width: 15px;
+  text-align: center;
+  text-decoration: none;
+  float: right;
+  margin-top: 56px;
+  margin-left: 15px;
+  vertical-align: top;
+}
+
+.on-off-toggle {
+  width: 56px;
+  height: 24px;
+  position: relative;
+  display: inline-block;
+  float: right;
+  margin-top: 61px;
+  margin-left: 40px;
+}
+
+.on-off-toggle__slider {
+  width: 56px;
+  height: 24px;
+  display: block;
+  border-radius: 34px;
+  background-color: #21deb9;
+  transition: 0.4s ease;
+}
+
+.on-off-toggle__slider:before {
+  content: '';
+  display: block;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px #949494;
+  bottom: 3px;
+  height: 18px;
+  left: 3px;
+  position: absolute;
+  transition: .4s;
+  width: 18px;
+  z-index: 5;
+  border-radius: 100%;
+}
+
+.on-off-toggle__slider:after {
+  display: block;
+  line-height: 24px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #484848;
+  padding-left: 26px;
+  transition: all 0.4s;
+}
+
+.on-off-toggle__input {
+  position: absolute;
+  opacity: 0;
+}
+
+.on-off-toggle__input:checked+.on-off-toggle__slider {
+  background-color: #1e1e1e;
+}
+
+.on-off-toggle__input:checked+.on-off-toggle__slider:before {
+  transform: translateX(32px);
+}
+
+.on-off-toggle__input:checked+.on-off-toggle__slider:after {
+  color: #FFFFFF;
+  padding-left: 8px;
+}
