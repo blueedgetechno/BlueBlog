@@ -222,7 +222,7 @@ def addvideo():
         link = request.form['link']
         password = request.form['password']
         if check(password):
-            newvideo = Videos(title=title,link=link)
+            newvideo = Videos(title=title,link="https://www.youtube.com/embed/"+link)
             try:
                 db.session.add(newvideo)
                 db.session.commit()
@@ -236,13 +236,13 @@ def addvideo():
 
 @app.route('/video')
 def video():
-    videos = Videos.query.all()
+    videos = Videos.query.order_by(Videos.id.desc()).all()
     return render_template('video.html',videos = videos,theme=theme[0])
 
 
 @app.route('/editvideo')
 def editvideo():
-    videos = Videos.query.all()
+    videos = Videos.query.order_by(Videos.id.desc()).all()
     return render_template('editvideo.html', videos=videos,theme=theme[0])
 
 
