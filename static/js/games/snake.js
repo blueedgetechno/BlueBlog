@@ -1,14 +1,11 @@
-// var w = 740,
-//   h = 580
-
 var keys = {};
 window.addEventListener("keydown",
     function(e){
         keys[e.keyCode] = true;
         switch(e.keyCode){
-            case 37: case 39: case 38:  case 40: // Arrow keys
-            case 32: e.preventDefault(); break; // Space
-            default: break; // do not block other keys
+            case 37: case 39: case 38:  case 40:
+            case 32: e.preventDefault(); break;
+            default: break;
         }
     },
 false);
@@ -28,13 +25,14 @@ var win = window,
 var w = w1
 var h = h1-7
 
-var z = Math.floor(w/74);
-var r = Math.floor(w/z);
-var c = Math.floor(h/z);
+var z = Math.floor(w / 74);
+var r = Math.floor(w / z);
+var c = Math.floor(h / z);
 h = c * z
 w = r * z
 var highscore = 0
 var start = true;
+var cr = Math.floor((5/740)*w)
 
 function setup() {
   createCanvas(w, h);
@@ -45,10 +43,43 @@ class Box {
     this.x = x
     this.y = y
     this.z = z
+    this.d = [1, 0]
+    this.c=0
   }
   draw() {
     fill(0)
     rect(this.x * this.z, this.y * this.z, this.z, this.z)
+  }
+  drawhead(d) {
+    fill(0)
+    var cp = [cr, cr, cr, cr]
+    if (d[0] == this.d[0] && d[1] == this.d[1]) {
+      this.c=0
+    } else {
+      this.c+=1
+      if(this.c>1){
+        this.d=d
+        this.c=0
+      }
+    }
+    if (this.d[1] == 0) {
+        if (this.d[0] > 0) {
+          cp[0] = 0
+          cp[3] = 0
+        } else {
+          cp[1] = 0
+          cp[2] = 0
+        }
+      } else {
+        if (this.d[1] > 0) {
+          cp[0] = 0
+          cp[1] = 0
+        } else {
+          cp[2] = 0
+          cp[3] = 0
+        }
+      }
+    rect(this.x * this.z, this.y * this.z, this.z, this.z, cp[0], cp[1], cp[2], cp[3])
   }
 }
 
@@ -61,7 +92,7 @@ class Food {
   draw() {
     noStroke()
     fill(245, 22, 41)
-    rect(this.x * this.z, this.y * this.z, this.z, this.z, 5)
+    rect(this.x * this.z, this.y * this.z, this.z, this.z, cr)
   }
 }
 
@@ -80,7 +111,8 @@ class Snake {
   }
   draw() {
     this.len = this.body.length
-    for (var i = 0; i < this.len; i++) {
+    this.body[0].drawhead(this.d)
+    for (var i = 1; i < this.len; i++) {
       this.body[i].draw()
     }
   }
@@ -89,10 +121,10 @@ class Snake {
     if (this.body[0].x == food.x && this.body[0].y == food.y) {
       genefood()
       this.score += 2
-      if(this.score%20==0){
-        this.spd-=1
-        if(this.spd<2){
-          this.spd=2
+      if (this.score % 20 == 0) {
+        this.spd -= 1
+        if (this.spd < 2) {
+          this.spd = 2
         }
       }
       this.body.push(new Box(this.body[this.len - 1].x, this.body[this.len - 1].y))
@@ -165,26 +197,26 @@ function draw() {
       text("Game Over", w / 2 - 180, h / 2)
       textStyle(NORMAL)
       textSize(24)
-      text("Score : " + snake.score + "   Best : " + highscore,w/2-90,h/2+45)
+      text("Score : " + snake.score + "   Best : " + highscore, w / 2 - 90, h / 2 + 45)
       text("Press left mouse to play again ", w / 2 - 150, h / 2 + 85)
       if (mouseIsPressed) {
         reset()
       }
     }
 
-  }else{
-      background(255)
-      // fill(0)
-      textSize(72)
-      textStyle(BOLD)
-      text("WELCOME", w / 2 - 180, h / 2)
-      textStyle(NORMAL)
-      textSize(24)
-      text("Press left mouse to play", w / 2 - 125, h / 2 + 45)
-      text("Use arrow keys to move", w / 2 - 125, h / 2 + 95)
-      if (mouseIsPressed) {
-        start = false
-      }
+  } else {
+    background(255)
+    // fill(0)
+    textSize(72)
+    textStyle(BOLD)
+    text("WELCOME", w / 2 - 180, h / 2)
+    textStyle(NORMAL)
+    textSize(24)
+    text("Press left mouse to play", w / 2 - 125, h / 2 + 45)
+    text("Use arrow keys to move", w / 2 - 125, h / 2 + 95)
+    if (mouseIsPressed) {
+      start = false
+    }
   }
 }
 
