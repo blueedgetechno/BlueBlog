@@ -32,7 +32,8 @@ h = c * z
 w = r * z
 var highscore = 0
 var start = true;
-var cr = Math.floor((5/740)*w)
+var cr = z/2
+var eys = (2.5/10)*z
 
 function setup() {
   createCanvas(w, h);
@@ -53,33 +54,47 @@ class Box {
   drawhead(d) {
     fill(0)
     var cp = [cr, cr, cr, cr]
+    var eye = [1,1,1,1]
     if (d[0] == this.d[0] && d[1] == this.d[1]) {
-      this.c=0
+      this.c = 0
     } else {
-      this.c+=1
-      if(this.c>1){
-        this.d=d
-        this.c=0
+      this.c += 1
+      if (this.c > 1) {
+        this.d = d
+        this.c = 0
       }
     }
     if (this.d[1] == 0) {
-        if (this.d[0] > 0) {
-          cp[0] = 0
-          cp[3] = 0
-        } else {
-          cp[1] = 0
-          cp[2] = 0
-        }
+      if (this.d[0] > 0) {
+        cp[0] = 0
+        cp[3] = 0
+        eye[0] = 0
+        eye[3] = 0
       } else {
-        if (this.d[1] > 0) {
-          cp[0] = 0
-          cp[1] = 0
-        } else {
-          cp[2] = 0
-          cp[3] = 0
-        }
+        cp[1] = 0
+        cp[2] = 0
+        eye[1] = 0
+        eye[2] = 0
       }
+    } else {
+      if (this.d[1] > 0) {
+        cp[0] = 0
+        cp[1] = 0
+        eye[0] = 0
+        eye[1] = 0
+      } else {
+        cp[2] = 0
+        cp[3] = 0
+        eye[2] = 0
+        eye[3] = 0
+      }
+    }
     rect(this.x * this.z, this.y * this.z, this.z, this.z, cp[0], cp[1], cp[2], cp[3])
+    fill(255)
+    if(eye[0]) ellipse((this.x+1/4)*this.z,(this.y+1/4)*this.z,eys,eys)
+    if(eye[1]) ellipse((this.x+3/4)*this.z,(this.y+1/4)*this.z,eys,eys)
+    if(eye[2]) ellipse((this.x+3/4)*this.z,(this.y+3/4)*this.z,eys,eys)
+    if(eye[3]) ellipse((this.x+1/4)*this.z,(this.y+3/4)*this.z,eys,eys)
   }
 }
 
