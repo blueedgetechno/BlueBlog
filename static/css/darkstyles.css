@@ -24,27 +24,27 @@ a[href="#"] {
   font-size: 15px;
 }
 
-body {
+body[data-theme="dark"]  {
   background-color: #1e1e1e;
   color: #eaeaea;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
 }
 
-#header {
+body[data-theme="dark"]  #header {
   background-color: #151515;
   height: 150px;
   line-height: 150px;
 }
 
-#header a {
+body[data-theme="dark"]  #header a {
   color: white;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-#header a:hover {
+body[data-theme="dark"]  #header a:hover {
   color: #f6a623;
 }
 
@@ -71,7 +71,7 @@ body {
   padding-left: 20px;
 }
 
-#logo {
+body[data-theme="dark"]  #logo {
   width: 40px;
   height: 40px;
   padding: 10px;
@@ -83,7 +83,7 @@ body {
   transition: 0.5s;
 }
 
-#logo:hover {
+body[data-theme="dark"]  #logo:hover {
   background-color: #111111;
   box-shadow: 2px 5px 8px #1a1a1a;
   transition: 0.5s;
@@ -100,7 +100,7 @@ body {
   transition: 0.5s;
 }
 
-.post:hover {
+body[data-theme="dark"]  .post:hover {
   max-width: 900px;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -113,7 +113,7 @@ body {
   transition: 0.5s;
 }
 
-pre {
+body[data-theme="dark"]  pre {
   font-family: 'Montserrat', sans-serif;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -152,11 +152,11 @@ pre {
   text-align: left;
 }
 
-.things {
+body[data-theme="dark"] .things {
   color: #f9a55d;
 }
 
-.post-author img {
+body[data-theme="dark"] .post-author img {
   width: 50px;
   height: 50px;
   vertical-align: middle;
@@ -170,11 +170,11 @@ pre {
   font-weight: bold;
 }
 
-.post-container:nth-child(even) {
+body[data-theme="dark"] .post-container:nth-child(even) {
   background-color: #252525;
 }
 
-.about-author img {
+body[data-theme="dark"] .about-author img {
   width: 200px;
   height: 200px;
   vertical-align: middle;
@@ -182,7 +182,7 @@ pre {
   border: 8px solid #292929;
 }
 
-.about-author span {
+body[data-theme="dark"] .about-author span {
   width: 200px;
   height: 200px;
   font-weight: bold;
@@ -196,7 +196,7 @@ pre {
   vertical-align: middle;
 }
 
-.error-author span {
+body[data-theme="dark"] .error-author span {
   width: 200px;
   height: 200px;
   font-weight: bold;
@@ -217,7 +217,7 @@ pre {
   letter-spacing: 0.1em;
 }
 
-h1, h2, h3, h4 {
+body[data-theme="dark"] h1, h2, h3, h4 {
   color: #fff;
 }
 
@@ -354,7 +354,7 @@ a:hover {
   color: white;
 }
 
-.pager {
+body[data-theme="dark"] .pager {
   width: 10%;
   color: white;
   margin: 40px;

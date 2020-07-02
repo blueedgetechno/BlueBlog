@@ -1,10 +1,6 @@
 {%extends 'base.html' %}
 {%block body%}
-{% if theme=='light' %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card.css')}}">
-{% else %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/darkcard.css')}}">
-{% endif %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card.css')}}">
 <div id="content">
   <div class="card" style="margin: 0 auto;margin-top:60px">
     <h3>Check Out my <a id="ulink" href="https://www.youtube.com/channel/UCozhS3MxzCGrPTffh0mqArw" target="_blank"> <mark style="color:red;background-color:inherit;;">Youtube</mark> </a> channel</h3>

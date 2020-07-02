@@ -11,6 +11,12 @@ function give(date1, date2) {
     return Math.round(ans / 365).toString() + " years ago";
   } else if (ans >= 30) {
     return Math.round(ans / 30).toString() + " months ago";
+  } else if (ans >= 7) {
+    if(Math.round(ans / 7)==1){
+      return Math.round(ans / 7).toString() + " week ago";
+    }else{
+      return Math.round(ans / 7).toString() + " weeks ago";
+    }
   } else {
     if (ans == 0) {
       return "today";

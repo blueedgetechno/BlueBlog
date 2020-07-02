@@ -1,4 +1,4 @@
-#check {
+body[data-theme="dark"] #check {
   width: 12%;
   color: white;
   background-color: #f6a623;
@@ -14,7 +14,7 @@
   transition: 0.5s;
 }
 
-#check:active {
+body[data-theme="dark"] #check:active {
   box-shadow: 2px 2px 7px #0c0c0c;
   font-size: 15px;
   transform: scale(0.9) translateZ(0);
@@ -23,48 +23,6 @@
 
 #check, select {
   outline: none;
-}
-
-h1, h2, h3, h4 {
-  color: #fff;
-}
-
-p {
-  line-height: 1.5;
-}
-
-#footer {
-  background-color: #2f2f2f;
-  padding: 50px 0;
-}
-
-#footer h4 {
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-#footer p {
-  color: white;
-}
-
-.column {
-  min-width: 300px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-a {
-  color: #1abc9c;
-  text-decoration: none;
-}
-
-.column #quoteline {
-  color: #1abc9c;
-}
-
-a:hover {
-  color: #f6a623;
 }
 
 .card {
@@ -83,7 +41,7 @@ a:hover {
   transition: 0.5s;
 }
 
-.inputbox {
+body[data-theme="dark"] .inputbox {
   background-color: #1e1e1e;
   font-family: inherit;
   font-size: 15px;
@@ -96,12 +54,12 @@ a:hover {
   border-radius: 25px;
 }
 
-.inputbox, select {
+body[data-theme="dark"] .inputbox, select {
   color: white;
   outline: none;
 }
 
-.contentbox {
+body[data-theme="dark"] .contentbox {
   background-color: #1e1e1e;
   font-family: inherit;
   font-size: 15px;
@@ -115,7 +73,7 @@ a:hover {
   border-radius: 25px;
 }
 
-.contentbox, select {
+body[data-theme="dark"] .contentbox, select {
   color: white;
   outline: none;
 }

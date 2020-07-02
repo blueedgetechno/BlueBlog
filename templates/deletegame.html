@@ -1,16 +1,11 @@
 {%extends 'base.html' %}
 {%block body%}
-{% if theme=='light' %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/post.css')}}">
-{% else %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/darkcard.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/darkpost.css')}}">
-{% endif %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/post.css')}}">
 <div id="content">
   <div class="container">
     {% set fname = 'img/games/' + game.nick + '.png' %}
-    <div class="card" style="background-color:white">
+    <div class="card">
       <a href="/play/{{game.id}}">
         <img src="{{ url_for('static',filename=fname)}}"><br>
         <h3 id="name">{{game.name}}</h3>

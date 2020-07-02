@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="light">
+<html lang="en" dir="ltr">
 <head>
   <script type="text/javascript" src="{{ url_for('static',filename='js/quote.js')}}"></script>
   <script type="text/javascript" src="{{ url_for('static',filename='js/clocktime.js')}}"></script>
@@ -8,14 +8,10 @@
   <link rel="shortcut icon" type="image/png" href="{{ url_for('static',filename='img/favicons.png')}}">
   <meta charset="utf-8">
   <title>Blue's Blog</title>
-  {% if theme=='light' %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css')}}">
-  {% else %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/darkstyles.css')}}">
-  {% endif %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/styles.css')}}">
 </head>
 
-<body>
+<body  data-theme="light">
   <div id="header">
     <div class="container">
       <a id="header-title" href="/"><img id="logo" src="{{ url_for('static',filename='img/logo.png')}}">My Blog</a>
@@ -25,20 +21,36 @@
         <li><a href="/about">About</a></li>
         <li><a href="/admin">Admin</a>
         <li><a href="#footer">Contact</a></li>
-        {% if theme=='dark' %}
-          <i class="fa fa-moon-o" id="theme" aria-hidden="true"></i>
-        {% else %}
-          <i class="fa fa-sun-o" id="theme" aria-hidden="true"></i>
-        {% endif %}
+        <i class="fa fa-sun-o" id="theme" aria-hidden="true"></i>
         <div class="on-off-toggle">
-          <input class="on-off-toggle__input" type="checkbox" onchange="window.location.href = '/changetheme'" id="bopis" />
+          <input class="on-off-toggle__input" onchange="toggler()" type="checkbox" id="bopis" />
           <label for="bopis" class="on-off-toggle__slider"></label>
         </div>
-        {% if theme=='dark' %}
-          <script type="text/javascript">
-            document.getElementById('bopis').checked = true;
-          </script>
-        {% endif %}
+        <script type="text/javascript">
+          var checkbox = document.querySelector('input[id=bopis]')
+          const currentTheme = localStorage.getItem("theme");
+          if (currentTheme == "dark") {
+            document.body.setAttribute('data-theme','dark');
+            document.querySelector('i').setAttribute('class','fa fa-moon-o');
+            checkbox.checked = true;
+          }else{
+            document.body.setAttribute('data-theme','light');
+            document.querySelector('i').setAttribute('class','fa fa-sun-o');
+            checkbox.checked = false;
+          }
+
+          function toggler() {
+            if (checkbox.checked){
+              document.body.setAttribute('data-theme','dark');
+              document.querySelector('i').setAttribute('class','fa fa-moon-o');
+              localStorage.setItem("theme", "dark");
+            }else{
+              document.body.setAttribute('data-theme','light');
+              document.querySelector('i').setAttribute('class','fa fa-sun-o');
+              localStorage.setItem("theme", "light");
+            }
+          }
+        </script>
 
       </ul>
 

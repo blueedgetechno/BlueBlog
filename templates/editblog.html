@@ -1,11 +1,6 @@
 {%extends 'base.html' %}
 {%block body%}
-{% if theme=='light' %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/post.css')}}">
-{% else %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/darkpost.css')}}">
-{% endif %}
-
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/post.css')}}">
 <div id="content">
   <div class="container">
     {% set fname = 'img/post/'+post.image %}

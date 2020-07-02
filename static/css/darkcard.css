@@ -5,7 +5,7 @@
   justify-content: space-between;
 }
 
-.card{
+body[data-theme="dark"] .card{
   background-color: inherit;
   vertical-align: middle;
   max-width: 600px;
@@ -20,11 +20,8 @@
   border-radius: 15px;
   transition: 0.5s;
 }
-.card h3{
-  color: white;
-}
 
-.card:hover{
+body[data-theme="dark"] .card:hover{
   border-radius: 15px;
   box-shadow: 5px 10px 20px #070707;
   transform: scale(1.10) translateZ(0);
@@ -40,7 +37,7 @@
   transition: 0.5s;
 }
 
-.video{
+body[data-theme="dark"] .video{
   vertical-align: middle;
   max-width: 560px;
   max-height: 400px;
@@ -53,7 +50,7 @@
   border-radius: 15px;
 }
 
-.video #video-title{
+body[data-theme="dark"] .video #video-title{
   color: #fff;
   transition: 0.5s;
 }

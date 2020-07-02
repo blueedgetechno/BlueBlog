@@ -1,10 +1,6 @@
 {%extends 'base.html' %}
 {%block body%}
-{% if theme=='light' %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card.css')}}">
-{% else %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/darkcard.css')}}">
-{% endif %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/card.css')}}">
 <div id="content">
   <div class="container">
     {% for game in games %}

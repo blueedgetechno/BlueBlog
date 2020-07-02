@@ -1,4 +1,4 @@
-#check {
+body[data-theme="light"] #check {
   width: 12%;
   color: white;
   background-color: #f6a623;
@@ -14,8 +14,31 @@
   transition: 0.5s;
 }
 
-#check:active {
+body[data-theme="light"] #check:active {
   box-shadow: 2px 2px 7px #888888;
+  font-size: 15px;
+  transform: scale(0.9) translateZ(0);
+  transition: 0.5s;
+}
+
+body[data-theme="dark"] #check {
+  width: 12%;
+  color: white;
+  background-color: #f6a623;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 3px solid #e1882d;
+  border-radius: 24px;
+  box-shadow: 3px 3px 9px #0c0c0c;
+  transition: 0.5s;
+}
+
+body[data-theme="dark"] #check:active {
+  box-shadow: 2px 2px 7px #0c0c0c;
   font-size: 15px;
   transform: scale(0.9) translateZ(0);
   transition: 0.5s;
@@ -23,48 +46,6 @@
 
 #check, select {
   outline: none;
-}
-
-h1, h2, h3, h4 {
-  color: #333;
-}
-
-p {
-  line-height: 1.5;
-}
-
-#footer {
-  background-color: #2f2f2f;
-  padding: 50px 0;
-}
-
-#footer h4 {
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-#footer p {
-  color: white;
-}
-
-.column {
-  min-width: 300px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-a {
-  color: #1abc9c;
-  text-decoration: none;
-}
-
-.column #quoteline {
-  color: #1abc9c;
-}
-
-a:hover {
-  color: #f6a623;
 }
 
 .card {
@@ -83,7 +64,7 @@ a:hover {
   transition: 0.5s;
 }
 
-.inputbox {
+body[data-theme="light"] .inputbox {
   font-family: inherit;
   font-size: 15px;
   font-weight: bold;
@@ -95,12 +76,13 @@ a:hover {
   border-radius: 25px;
 }
 
-.inputbox, select {
+
+body[data-theme="light"] .inputbox, select {
   color: #1e1e1e;
   outline: none;
 }
 
-.contentbox {
+body[data-theme="light"] .contentbox {
   font-family: inherit;
   font-size: 15px;
   font-weight: bold;
@@ -113,8 +95,45 @@ a:hover {
   border-radius: 25px;
 }
 
-.contentbox, select {
+body[data-theme="light"] .contentbox, select {
   color: #1e1e1e;
+  outline: none;
+}
+
+body[data-theme="dark"] .inputbox {
+  background-color: #1e1e1e;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  color: inherit;
+  width: 70%;
+  padding: 14px 14px 14px 14px;
+  box-sizing: border-box;
+  border: 5px solid #12976c;
+  border-radius: 25px;
+}
+
+body[data-theme="dark"] .inputbox, select {
+  color: white;
+  outline: none;
+}
+
+body[data-theme="dark"] .contentbox {
+  background-color: #1e1e1e;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  color: inherit;
+  width: 70%;
+  padding: 24px 14px 24px 14px;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  border: 5px solid #12976c;
+  border-radius: 25px;
+}
+
+body[data-theme="dark"] .contentbox, select {
+  color: white;
   outline: none;
 }
 
