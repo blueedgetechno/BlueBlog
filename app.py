@@ -21,6 +21,7 @@ with open("templates/config.json", "r") as c:
     para = json.load(c)["para"]
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'ThisIsAwildGameOfSurvival'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
 db = SQLAlchemy(app)
 
