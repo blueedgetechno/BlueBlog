@@ -1,0 +1,66 @@
+.projectblog h1 {
+  text-align: left;
+}
+
+#updated {
+  text-align: right;
+  margin-right: 9%;
+}
+
+.projectblog hr {
+  width: 92%;
+  margin-left: 0%;
+}
+
+.main{
+  text-align:center;
+}
+
+.pager{
+  margin-left: 120px !important;
+  margin-right: 120px !important;
+}
+
+body[data-theme="light"] .guesscard{
+  vertical-align: middle;
+  max-width: 560px;
+  max-height: 400px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  text-align:center;
+  box-shadow: 2px 5px 9px #888888;
+  border-radius: 15px;
+}
+
+body[data-theme="dark"] .guesscard{
+  vertical-align: middle;
+  max-width: 560px;
+  max-height: 400px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  text-align:center;
+  box-shadow: 2px 5px 9px #070707;
+  border-radius: 15px;
+}
+
+body[data-theme="light"] .guesscard #guessvalue{
+  color: #333;
+}
+
+body[data-theme="dark"] .guesscard #guessvalue{
+  color: #fff;
+}
+
+.guesscard{
+  padding: 40px;
+  text-align: center;
+}
+
+#drawArea{
+  width: 504px;
+  height: 504px;
+  margin-left: 24%;
+  border: 4px solid #888;
+}

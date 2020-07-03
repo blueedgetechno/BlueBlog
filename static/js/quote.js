@@ -1,7 +1,9 @@
 fetch("/js/quotes.txt").then(r => r.text()).then(t => generate(t))
 function generate(t) {
-  var quotes = t.split('\n');
-  document.getElementById('quoteline').textContent = quotes[Math.floor(Math.random() * quotes.length)]
+  setTimeout(function () {
+      var quotes = t.split('\n');
+      document.getElementById('quoteline').textContent = quotes[Math.floor(Math.random() * quotes.length)]
+    }, 2500);
   return
 }
 

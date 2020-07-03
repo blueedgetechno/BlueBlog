@@ -1,0 +1,48 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/present.css')}}">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<div id="content">
+  <div class="container projectblog">
+    <div class="heading">
+      <br>
+      <h1>Hand Written Digit recognition by Machine learning</h1>
+      <h5 id="updated">Last updated on : July 3, 2020</h5>
+      <hr>
+      <br>
+    </div>
+    <div class="intro">
+      <p>This is a Hand Written Digit recognition with Neural Networks.</p>
+      <p>I started working on this projects two days ago from building an UI to writing a machine
+        learning program. It not always predict correct. Try to draw around center.</p>
+      <br>
+    </div>
+    <div class="main">
+      <h3>Go ahead and Give it a try</h3>
+      <h6>Draw a digit</h6>
+      <div id="drawArea"></div>
+      <br><br>
+      <div class="options">
+        <a class="pager clear" onclick="reset()">Clear</a>
+        <a class="pager guess" onclick="show()">Guess</a>
+      </div>
+      <div class="guesscard" hidden>
+        <h3 id="guessvalue"></h3>
+      </div>
+      <br><br>
+      <h3> <a href="https://github.com/blueedgetechno/handwritten-digit-recognition" target="_blank">view source code on github</a> </h3>
+    </div>
+    <br><br>
+    <div class="conclusion">
+      <p>The Neural Networks uses four layers (input, output and two hidden layers). The hidden layers use 512 dense nodes each.
+      <br> <br>The hidden layers uses Rectified linear unit as activation function
+      while the output layer uses sigmoid function.</p>
+      <p>Ps: I think the model is overfitted but i will fix it soon .</p>
+      <br>
+    </div>
+    <br><br>
+
+  </div>
+</div>
+{%endblock%}
