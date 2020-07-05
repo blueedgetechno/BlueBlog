@@ -2,8 +2,10 @@ from flask import Flask, render_template, url_for, redirect, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.utils import secure_filename
-from digit import guess
-import json, hashlib, os, random
+import json
+import hashlib
+import os
+import random
 
 
 images = []
@@ -398,13 +400,6 @@ def project():
 @app.route('/projects')
 def projectmenu():
     return render_template("projects.html")
-
-
-@app.route('/projects/digit/predict', methods=['POST'])
-def predict():
-    num = request.json["number"]
-    prediction = guess(num)
-    return jsonify(prediction)
 
 
 if __name__ == '__main__':

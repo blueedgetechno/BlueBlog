@@ -1,5 +1,20 @@
-// import * as tf from '@tensorflow/tfjs';
-// const model = tf.loadLayersModel('/projects/model.json')
+async function init() {
+  try {
+    const model = await tf.loadLayersModel('localstorage://dg-model');
+  } catch (e) {
+    const model = await tf.loadLayersModel('https://raw.githubusercontent.com/blueedgetechno/handwritten-digit-recognition/master/model.json')
+    console.log('model loaded')
+    await model.save('localstorage://dg-model');
+  } finally {
+    setTimeout(function () {
+      var vas = document.getElementById('loading')
+      vas.innerText = "Draw a digit"
+    },3000)
+  }
+
+}
+
+init()
 
 var sz = 18
 var w = sz * 28
@@ -107,24 +122,34 @@ for (var i = 0; i < 28; i += 1) {
   }
 }
 
-function show() {
+async function show() {
   for (var i = 0; i < 28; i += 1) {
     for (var j = 0; j < 28; j += 1) {
-      num[i][j] = boxes[i][j].color
+      inp[0][j][i] = boxes[i][j].color
+    }
+  }
+  const model = await tf.loadLayersModel('localstorage://dg-model');
+  var pred = model.predict(tf.tensor(inp)).dataSync()
+  var ind = 0
+  var pb = 0
+  for(var i=0;i<pred.length;i++){
+    if(pred[i]>pb){
+      pb = pred[i]
+      ind = i
     }
   }
 
-  $.ajax({
-    url: '/projects/digit/predict',
-    type: 'POST',
-    dataType: 'json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      "number": num
-    }),
-  }).done(function(result) {
-    var card = document.getElementsByClassName('guesscard')[0]
-    card.innerText = "This digit looks " + result + " to me"
-    card.hidden = false
-  })
+  var card = document.getElementsByClassName('guesscard')[0]
+  card.innerText = "This digit looks " + ind + " to me"
+  card.hidden = false
+
+}
+
+var inp = []
+inp.push([])
+for (var i = 0; i < 28; i += 1) {
+  inp[0].push([])
+  for (var j = 0; j < 28; j += 1) {
+    inp[0][i].push(0)
+  }
 }

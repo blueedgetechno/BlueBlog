@@ -4,4 +4,6 @@ requirement.txt
 *.pyc
 projects/group1-shard1of1.bin
 projects/model.json
+projects/keras_mnist.h5
 __pycache__/digit.cpython-37.pyc
+digit.py
