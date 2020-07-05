@@ -1,6 +1,9 @@
-var sz = 18;
-var w = sz * 28;
-var h = sz * 28;
+// import * as tf from '@tensorflow/tfjs';
+// const model = tf.loadLayersModel('/projects/model.json')
+
+var sz = 18
+var w = sz * 28
+var h = sz * 28
 
 function setup() {
   var canvas = createCanvas(w, h)
@@ -112,14 +115,16 @@ function show() {
   }
 
   $.ajax({
-      url: '/projects/digit/predict',
-      type: 'POST',
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify({"number": num}),
-    }).done(function(result) {
-      var card = document.getElementsByClassName('guesscard')[0]
-      card.innerText = "This digit looks "+result+" to me"
-      card.hidden = false
-    })
+    url: '/projects/digit/predict',
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      "number": num
+    }),
+  }).done(function(result) {
+    var card = document.getElementsByClassName('guesscard')[0]
+    card.innerText = "This digit looks " + result + " to me"
+    card.hidden = false
+  })
 }

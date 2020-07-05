@@ -1,7 +1,7 @@
-# from tensorflow.keras.models import load_model
+from keras.models import load_model
 from numpy import array, argmax
-# from tensorflow.keras import backend as K
-# K.clear_session()
+from keras import backend as K
+K.clear_session()
 
 class_names = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
