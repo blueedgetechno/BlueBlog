@@ -140,7 +140,7 @@ async function show() {
   }
 
   var card = document.getElementsByClassName('guesscard')[0]
-  card.innerText = "This digit looks " + ind + " to me"
+  card.innerText = "This digit looks like " + ind + " to me"
   card.hidden = false
 
 }
