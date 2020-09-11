@@ -105,3 +105,8 @@ body[data-theme="dark"] .video #video-title{
   transform: scale(1.10) translateZ(0);
   transition: 0.5s;
 }
+
+.projectlink img{
+  width: 560px;
+  border-radius: 10px;
+}

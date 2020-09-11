@@ -64,3 +64,10 @@ body[data-theme="dark"] .guesscard #guessvalue{
   margin-left: 24%;
   border: 4px solid #888;
 }
+
+.youtubevideo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

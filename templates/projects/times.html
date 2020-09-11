@@ -1,0 +1,49 @@
+{%extends 'base.html' %}
+{%block body%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/present.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/projects/times.css')}}">
+<script type="text/javascript" src="{{ url_for('static',filename='js/projects/times.js')}}"></script>
+
+<div id="content">
+  <div class="container projectblog">
+    <div class="heading">
+      <br>
+      <h1>Mathologer's multiplication on a circle with modulo</h1>
+      <h5 id="updated">Last updated on : Sep 11, 2020</h5>
+      <hr>
+      <br>
+    </div>
+    <div class="intro">
+      <p>This is a very beautiful representation of Multiplication circle.</p>
+      <p>What you are seeing is the pattern obtainained when the number of points on circle, representating certain modulo,
+        are connected by the other points representating modulo of certain times of themselves.</p>
+      <br>
+      <div class="youtubevideo">
+        <span>Watch the video to understand more</span><br><br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qhbuKbxJsk8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <br><br><br>
+    <div class="main">
+      <div class="drawcontainer">
+        <canvas id="display" width="736" height="590">
+        </canvas>
+        <div class="inputs">
+          <div class="play" onclick="play()"></div><br>
+          <div class="sliders">
+            <label>Multiplier : 2</label>
+            <input type="range" min="2" max="99" value="2" onchange="callme()" id="multiplier">
+          </div>
+          <div class="sliders">
+            <label>Base : 200</label>
+            <input type="range" min="10" max="200" value="200" onchange="callme()" id="base">
+          </div>
+        </div>
+        <script>
+          draw(200,2)
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

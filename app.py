@@ -392,9 +392,9 @@ def index_js(file):
     return data
 
 
-@app.route('/projects/digit')
-def project():
-    return render_template("projects/digit.html")
+@app.route('/projects/<string:projectname>')
+def project(projectname):
+    return render_template("projects/"+projectname+".html")
 
 
 @app.route('/projects')

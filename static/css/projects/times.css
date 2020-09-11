@@ -1,0 +1,55 @@
+.drawcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputs {
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.sliders{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.play{
+  width: 40px;
+  height: 50px;
+  background: #064ed0;
+  clip-path: polygon(0 0,0 100%, 100% 50%);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play:active{
+  transform: scale(1.2) translateZ(0);
+  transition: 0.3s;
+}
+
+.inputs label{
+  font-size: 1.4em;
+  padding: 20px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.inputs input[type=range] {
+  margin: auto;
+  width: 200px;
+  height: 50px;
+  padding: 24px 0;
+  outline: none;
+  background: transparent;
+}
+
+#display {
+  width: 736px;
+  border: 2px solid #888;
+}
