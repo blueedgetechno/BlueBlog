@@ -34,6 +34,7 @@
 }
 
 .inputs label{
+  width: 300px;
   font-size: 1.4em;
   padding: 20px;
   font-weight: bold;
@@ -42,7 +43,7 @@
 
 .inputs input[type=range] {
   margin: auto;
-  width: 200px;
+  width: 500px;
   height: 50px;
   padding: 24px 0;
   outline: none;
